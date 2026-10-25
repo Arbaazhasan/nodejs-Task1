@@ -63,7 +63,7 @@ export default function Step2Planner({ formData, onChange, errors = {} }) {
             className={`${styles.input} ${errors.guestCount ? styles.inputError : ''}`}
             placeholder="e.g. 200"
             value={planner.guestCount || ''}
-            onChange={(e) => handleFieldChange('guestCount', Number(e.target.value))}
+            onChange={(e) => handleFieldChange('guestCount', e.target.value === '' ? '' : Number(e.target.value))}
           />
           {errors.guestCount && <span className={styles.errorMessage}>{errors.guestCount}</span>}
         </div>
@@ -83,7 +83,7 @@ export default function Step2Planner({ formData, onChange, errors = {} }) {
             onChange={(e) =>
               onChange('plannerDetails', {
                 ...planner,
-                budget: { ...budget, max: Number(e.target.value) || 0 },
+                budget: { ...budget, max: e.target.value === '' ? '' : Number(e.target.value) },
               })
             }
           />

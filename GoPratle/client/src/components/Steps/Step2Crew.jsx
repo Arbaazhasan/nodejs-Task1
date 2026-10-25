@@ -65,7 +65,7 @@ export default function Step2Crew({ formData, onChange, errors = {} }) {
             className={`${styles.input} ${errors.headcount ? styles.inputError : ''}`}
             placeholder="e.g. 3"
             value={crew.headcount || ''}
-            onChange={(e) => handleFieldChange('headcount', Number(e.target.value))}
+            onChange={(e) => handleFieldChange('headcount', e.target.value === '' ? '' : Number(e.target.value))}
           />
           {errors.headcount && <span className={styles.errorMessage}>{errors.headcount}</span>}
         </div>
@@ -82,7 +82,7 @@ export default function Step2Crew({ formData, onChange, errors = {} }) {
             className={`${styles.input} ${errors.shiftHours ? styles.inputError : ''}`}
             placeholder="e.g. 8"
             value={crew.shiftHours || ''}
-            onChange={(e) => handleFieldChange('shiftHours', Number(e.target.value))}
+            onChange={(e) => handleFieldChange('shiftHours', e.target.value === '' ? '' : Number(e.target.value))}
           />
           {errors.shiftHours && <span className={styles.errorMessage}>{errors.shiftHours}</span>}
         </div>

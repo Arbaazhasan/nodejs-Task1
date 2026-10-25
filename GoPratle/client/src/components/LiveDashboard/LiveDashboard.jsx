@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './LiveDashboard.module.css';
 import { api } from '@/services/api';
 
-export default function LiveDashboard({ onPostNew }) {
+export default function LiveDashboard({ onPostNew, successMessage, onDismissSuccess }) {
   const [requirements, setRequirements] = useState([]);
   const [category, setCategory] = useState('all');
   const [search, setSearch] = useState('');
@@ -26,12 +26,51 @@ export default function LiveDashboard({ onPostNew }) {
   };
 
   useEffect(() => {
+    loadData();
+  }, []);
+
+  useEffect(() => {
     const t = setTimeout(loadData, 200);
     return () => clearTimeout(t);
   }, [category, search]);
 
   return (
     <div className={styles.container}>
+      {successMessage && (
+        <div
+          style={{
+            background: '#ecfdf5',
+            border: '1px solid #a7f3d0',
+            color: '#065f46',
+            padding: '10px 14px',
+            borderRadius: '6px',
+            fontSize: '0.86rem',
+            fontWeight: 600,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <span>✓ {successMessage}</span>
+          {onDismissSuccess && (
+            <button
+              type="button"
+              onClick={onDismissSuccess}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#065f46',
+                fontWeight: 700,
+                fontSize: '1rem',
+                cursor: 'pointer',
+              }}
+            >
+              ✕
+            </button>
+          )}
+        </div>
+      )}
+
       <div className={styles.controls}>
         <div className={styles.filters}>
           {['all', 'planner', 'performer', 'crew'].map((c) => (
@@ -86,8 +125,8 @@ export default function LiveDashboard({ onPostNew }) {
                 <span className={styles.cardMeta}>
                   {r.eventBasics?.eventType} • {r.eventBasics?.location?.city} • Posted by {r.contactPerson?.name}
                 </span>
-                <span style={{ fontSize: '0.7rem', color: '#94a3b8', fontFamily: 'monospace' }}>
-                  {r.referenceId}
+                <span style={{ fontSize: '0.72rem', color: '#64748b', fontFamily: 'monospace' }}>
+                  Reference ID: {r.referenceId}
                 </span>
               </div>
               <span className={`badge badge-${r.category}`}>{r.category}</span>

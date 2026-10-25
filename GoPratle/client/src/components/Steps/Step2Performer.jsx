@@ -89,7 +89,7 @@ export default function Step2Performer({ formData, onChange, errors = {} }) {
             className={`${styles.input} ${errors.durationMinutes ? styles.inputError : ''}`}
             placeholder="e.g. 60 or 90"
             value={perf.durationMinutes || ''}
-            onChange={(e) => handleFieldChange('durationMinutes', Number(e.target.value))}
+            onChange={(e) => handleFieldChange('durationMinutes', e.target.value === '' ? '' : Number(e.target.value))}
           />
           {errors.durationMinutes && <span className={styles.errorMessage}>{errors.durationMinutes}</span>}
         </div>

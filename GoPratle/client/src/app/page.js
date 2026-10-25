@@ -14,7 +14,6 @@ import Step3Performer from '../components/Steps/Step3Performer';
 import Step2Crew from '../components/Steps/Step2Crew';
 import Step3Crew from '../components/Steps/Step3Crew';
 import Step4Review from '../components/Steps/Step4Review';
-import SuccessModal from '../components/SuccessModal/SuccessModal';
 import LiveDashboard from '../components/LiveDashboard/LiveDashboard';
 
 import { validateStep } from '../utils/validation';
@@ -33,26 +32,26 @@ const initialFormData = {
   },
   plannerDetails: {
     planningScope: 'Full Planning',
-    guestCount: 150,
+    guestCount: '',
     themePreference: '',
-    budget: { max: 200000 },
-    servicesNeeded: ['Venue Sourcing', 'Catering Coordination'],
+    budget: { max: '' },
+    servicesNeeded: [],
     specialNotes: '',
   },
   performerDetails: {
     performerRole: 'Live Band',
-    genres: ['Bollywood', 'Pop'],
-    durationMinutes: 60,
+    genres: [],
+    durationMinutes: '',
     soundEquipmentProvided: true,
-    budget: { max: 40000 },
+    budget: { max: '' },
     specialNotes: '',
   },
   crewDetails: {
     crewDiscipline: 'Audio / Sound Engineer',
-    headcount: 2,
-    shiftHours: 8,
+    headcount: '',
+    shiftHours: '',
     equipmentOwnership: 'Venue/Organizer Provides Equipment',
-    rateAmount: 4000,
+    rateAmount: '',
     specialNotes: '',
   },
   contactPerson: {
@@ -69,7 +68,7 @@ export default function Home() {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
-  const [submittedData, setSubmittedData] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const handleFieldChange = (section, value) => {
     setFormData((prev) => ({
@@ -102,6 +101,13 @@ export default function Home() {
     }
   };
 
+  const handleResetForm = () => {
+    setFormData(initialFormData);
+    setCurrentStep(1);
+    setErrors({});
+    setSubmitError(null);
+  };
+
   const handleSubmit = async () => {
     const validation = validateStep(4, formData);
     if (!validation.isValid) {
@@ -115,7 +121,12 @@ export default function Home() {
     try {
       const res = await api.postRequirement(formData);
       if (res.success && res.data) {
-        setSubmittedData(res.data);
+        // 1. Reset form completely to fresh state and Step 1
+        handleResetForm();
+
+        // 2. Set success banner and forward directly to the Submissions page
+        setSuccessMessage(`Requirement posted successfully! Reference ID: ${res.data.referenceId}`);
+        setActiveTab('dashboard');
       } else {
         setSubmitError(res.message || 'Submission failed');
       }
@@ -126,28 +137,40 @@ export default function Home() {
     }
   };
 
-  const handleReset = () => {
-    setFormData(initialFormData);
-    setCurrentStep(1);
-    setSubmittedData(null);
-    setErrors({});
-    setSubmitError(null);
+  const handleTabChange = (tab) => {
+    if (tab === 'wizard') {
+      // Whenever navigating to post requirement from submissions or when finished, start fresh
+      if (activeTab === 'dashboard' || currentStep === 4) {
+        handleResetForm();
+      }
+    }
+    setActiveTab(tab);
+  };
+
+  const handlePostNew = () => {
+    handleResetForm();
+    setSuccessMessage(null);
+    setActiveTab('wizard');
   };
 
   return (
     <div className={styles.main}>
-      <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
+      <Navbar activeTab={activeTab} onTabChange={handleTabChange} />
 
       <main className={`container ${styles.content}`}>
         {activeTab === 'dashboard' ? (
-          <LiveDashboard onPostNew={() => setActiveTab('wizard')} />
+          <LiveDashboard
+            onPostNew={handlePostNew}
+            successMessage={successMessage}
+            onDismissSuccess={() => setSuccessMessage(null)}
+          />
         ) : (
           <div className={styles.card}>
             <Stepper currentStep={currentStep} onStepClick={setCurrentStep} />
 
             {submitError && (
               <div className={styles.alert}>
-                <strong>Connection Error:</strong> {submitError}
+                <strong>Error:</strong> {submitError}
               </div>
             )}
 
@@ -226,21 +249,6 @@ export default function Home() {
             </div>
           </div>
         )}
-
-        {submittedData && (
-          <SuccessModal
-            data={submittedData}
-            onViewDashboard={() => {
-              setSubmittedData(null);
-              setActiveTab('dashboard');
-            }}
-            onReset={handleReset}
-          />
-        )}
-
-        <footer className={styles.footer}>
-          GoPratle Requirement Flow • Next.js + Express + MongoDB
-        </footer>
       </main>
     </div>
   );
