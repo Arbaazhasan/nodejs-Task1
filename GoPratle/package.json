@@ -11,7 +11,8 @@
     "start:frontend": "cd client && npm run dev",
     "build:frontend": "cd client && npm run build",
     "test:backend": "cd server && npm test",
-    "install:all": "cd server && npm install --no-bin-links && cd ../client && npm install --no-bin-links"
+    "install:all": "cd server && npm install --no-bin-links && cd ../client && npm install --no-bin-links",
+    "deploy:frontend": "cd client && npx vercel"
   },
   "keywords": [
     "gopratle",
