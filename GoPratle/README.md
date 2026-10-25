@@ -2,7 +2,8 @@
 
 A production-grade, full-stack event requirement posting engine built for the **GoPratle Technical Assessment (Full-Stack Developer Intern)**.
 
-This system empowers event organizers to dynamically post requirements with a 4-step adaptive flow tailored specifically for **Event Planners**, **Performers**, and **Production Crew**, persisting cleanly categorised data into **MongoDB** with real-time validation and a live submission dashboard.
+- **🌐 Live Frontend (Vercel)**: [https://client-xi-sepia-21.vercel.app](https://client-xi-sepia-21.vercel.app)
+- **📦 GitHub Repository**: [https://github.com/Arbaazhasan/nodejs-Task1](https://github.com/Arbaazhasan/nodejs-Task1)
 
 ---
 
