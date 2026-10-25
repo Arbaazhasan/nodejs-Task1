@@ -81,7 +81,7 @@ export default function LiveDashboard({ onPostNew }) {
       {/* Metrics Row */}
       <div className={styles.statsGrid}>
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ background: 'rgba(99, 102, 241, 0.15)', color: '#6366f1' }}>
+          <div className={styles.statIcon} style={{ background: '#eef2ff', color: '#4f46e5' }}>
             <Layers size={22} />
           </div>
           <div>
@@ -91,7 +91,7 @@ export default function LiveDashboard({ onPostNew }) {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ background: 'rgba(139, 92, 246, 0.15)', color: '#c084fc' }}>
+          <div className={styles.statIcon} style={{ background: '#f5f3ff', color: '#7c3aed' }}>
             <CalendarRange size={22} />
           </div>
           <div>
@@ -101,7 +101,7 @@ export default function LiveDashboard({ onPostNew }) {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ background: 'rgba(236, 72, 153, 0.15)', color: '#f472b6' }}>
+          <div className={styles.statIcon} style={{ background: '#fdf2f8', color: '#db2777' }}>
             <Mic size={22} />
           </div>
           <div>
@@ -111,7 +111,7 @@ export default function LiveDashboard({ onPostNew }) {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ background: 'rgba(6, 182, 212, 0.15)', color: '#22d3ee' }}>
+          <div className={styles.statIcon} style={{ background: '#f0f9ff', color: '#0284c7' }}>
             <Sliders size={22} />
           </div>
           <div>
@@ -313,21 +313,22 @@ export default function LiveDashboard({ onPostNew }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '12px 16px',
-                background: 'rgba(255, 255, 255, 0.04)',
+                padding: '10px 14px',
+                background: '#f8fafc',
+                border: '1px solid #e2e8f0',
                 borderRadius: '8px',
               }}
             >
-              <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Current Workflow Status:</span>
+              <span style={{ fontSize: '0.85rem', color: '#475569', fontWeight: 600 }}>Workflow Status:</span>
               <select
                 value={selectedReq.status}
                 onChange={(e) => handleStatusChange(selectedReq._id, e.target.value)}
                 style={{
-                  background: 'var(--bg-surface-elevated)',
-                  border: '1px solid var(--border-medium)',
+                  background: '#ffffff',
+                  border: '1px solid #cbd5e1',
                   borderRadius: '6px',
                   padding: '6px 12px',
-                  color: '#fff',
+                  color: '#0f172a',
                   fontWeight: 600,
                   fontSize: '0.85rem',
                 }}
@@ -340,8 +341,8 @@ export default function LiveDashboard({ onPostNew }) {
             </div>
 
             {/* Full raw JSON data inspector tab or formatted cards */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '6px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', borderBottom: '1px solid #e2e8f0', paddingBottom: '6px' }}>
                 Full MongoDB Document
               </h4>
               <pre

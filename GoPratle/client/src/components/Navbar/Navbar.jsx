@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 import { api } from '@/services/api';
-import { Sparkles, Layers, ListFilter, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { PlusCircle, List, ChevronDown, CheckCircle2 } from 'lucide-react';
 
 export default function Navbar({ activeTab, onTabChange, onFillSample }) {
   const [dbConnected, setDbConnected] = useState(false);
@@ -22,7 +22,7 @@ export default function Navbar({ activeTab, onTabChange, onFillSample }) {
       }
     };
     checkDb();
-    const interval = setInterval(checkDb, 15000);
+    const interval = setInterval(checkDb, 10000);
     return () => {
       isMounted = false;
       clearInterval(interval);
@@ -35,17 +35,18 @@ export default function Navbar({ activeTab, onTabChange, onFillSample }) {
         <div className={styles.brandGroup} onClick={() => onTabChange('wizard')}>
           <div className={styles.logoIcon}>GP</div>
           <div className={styles.brandTitles}>
-            <span className={styles.brandName}>
-              GoPratle <span className="brand-gradient-text">Engine</span>
-            </span>
-            <span className={styles.brandTagline}>Requirement Posting Flow</span>
+            <span className={styles.brandName}>GoPratle Events</span>
+            <span className={styles.brandTagline}>Requirement Posting Flow • Intern Assignment</span>
           </div>
         </div>
 
         <div className={styles.navActions}>
-          <div className={styles.statusIndicator} title={dbConnected ? 'Backend & MongoDB Connected' : 'Checking connection...'}>
+          <div
+            className={styles.statusIndicator}
+            title={dbConnected ? 'Backend Server (Port 5000) & MongoDB are Live!' : 'Backend is offline. Run: npm run dev:backend'}
+          >
             <span className={`${styles.statusDot} ${dbConnected ? styles.connected : ''}`} />
-            <span>{dbConnected ? 'API & Mongo Live' : 'Connecting API...'}</span>
+            <span>{dbConnected ? 'Backend Live' : 'Backend Offline'}</span>
           </div>
 
           <button
@@ -53,7 +54,7 @@ export default function Navbar({ activeTab, onTabChange, onFillSample }) {
             className={`${styles.navButton} ${activeTab === 'wizard' ? styles.active : ''}`}
             onClick={() => onTabChange('wizard')}
           >
-            <Sparkles size={16} />
+            <PlusCircle size={15} />
             <span>Post Requirement</span>
           </button>
 
@@ -62,8 +63,8 @@ export default function Navbar({ activeTab, onTabChange, onFillSample }) {
             className={`${styles.navButton} ${activeTab === 'dashboard' ? styles.active : ''}`}
             onClick={() => onTabChange('dashboard')}
           >
-            <Layers size={16} />
-            <span>Live Submissions</span>
+            <List size={15} />
+            <span>View Submissions</span>
           </button>
 
           <div className={styles.sampleMenu}>
@@ -72,7 +73,7 @@ export default function Navbar({ activeTab, onTabChange, onFillSample }) {
               className={styles.navButton}
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
-              <span>Demo Presets</span>
+              <span>Fill Sample Data</span>
               <ChevronDown size={14} />
             </button>
 
@@ -87,7 +88,7 @@ export default function Navbar({ activeTab, onTabChange, onFillSample }) {
                   }}
                 >
                   <span className="badge badge-planner">Planner</span>
-                  <span>Royal Wedding</span>
+                  <span>Wedding Reception</span>
                 </button>
                 <button
                   type="button"
@@ -98,7 +99,7 @@ export default function Navbar({ activeTab, onTabChange, onFillSample }) {
                   }}
                 >
                   <span className="badge badge-performer">Performer</span>
-                  <span>Tech Fest Band</span>
+                  <span>College Fest Band</span>
                 </button>
                 <button
                   type="button"
@@ -109,7 +110,7 @@ export default function Navbar({ activeTab, onTabChange, onFillSample }) {
                   }}
                 >
                   <span className="badge badge-crew">Crew</span>
-                  <span>Sound Tech Team</span>
+                  <span>Sound Crew (5 Pax)</span>
                 </button>
               </div>
             )}

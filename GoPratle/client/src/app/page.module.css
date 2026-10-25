@@ -2,75 +2,75 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #f8fafc;
 }
 
 .contentContainer {
   flex: 1;
-  padding: 30px 20px 80px 20px;
+  padding: 24px 20px 60px 20px;
 }
 
 .heroHeader {
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto 10px auto;
+  max-width: 650px;
+  margin: 0 auto 8px auto;
 }
 
 .heroBadge {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .heroTitle {
-  font-size: 2.25rem;
+  font-size: 1.85rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  margin-bottom: 8px;
 }
 
 .heroSubtitle {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
+  font-size: 0.9rem;
+  color: #64748b;
   line-height: 1.5;
 }
 
 .wizardCard {
-  max-width: 900px;
+  max-width: 860px;
   margin: 0 auto;
-  background: var(--bg-surface-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 36px;
-  box-shadow: var(--shadow-lg);
+  padding: 30px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
   position: relative;
 }
 
 .alertBanner {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  color: #fca5a5;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
   border-radius: var(--radius-md);
-  padding: 12px 16px;
-  margin-bottom: 20px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
   font-size: 0.85rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
+  line-height: 1.4;
 }
 
 .footerInfo {
-  margin-top: 40px;
+  margin-top: 36px;
   text-align: center;
   font-size: 0.78rem;
-  color: var(--text-muted);
+  color: #94a3b8;
 }
 
 @media (max-width: 768px) {
   .heroTitle {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
   .wizardCard {
-    padding: 24px 18px;
+    padding: 20px 16px;
   }
 }

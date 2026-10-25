@@ -230,14 +230,14 @@ export default function Home() {
           <>
             <div className={styles.heroHeader}>
               <div className={styles.heroBadge}>
-                <span className="badge badge-planner">Interactive Requirement Workflow</span>
+                <span className="badge badge-planner">Internship Technical Assignment</span>
               </div>
-              <h1 className={`${styles.heroTitle} gradient-text`}>
-                Post Your Event Requirement
+              <h1 className={styles.heroTitle}>
+                Event Requirement Posting Form
               </h1>
               <p className={styles.heroSubtitle}>
-                Adaptive 4-step wizard designed for Event Planners, Live Performers, and Technical Crew.
-                Saved directly to MongoDB with categorical isolation.
+                Fill out the 4-step requirement flow for Event Planners, Performers, or Crew.
+                Submitted data is categorized and saved directly to MongoDB.
               </p>
             </div>
 

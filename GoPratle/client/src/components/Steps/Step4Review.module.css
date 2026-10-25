@@ -1,18 +1,19 @@
 .reviewSummary {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
 .summaryCard {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 .cardHeader {
@@ -22,36 +23,35 @@
 }
 
 .cardTitle {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-primary);
+  color: #0f172a;
 }
 
 .editButton {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.78rem;
-  color: var(--accent-primary);
+  font-size: 0.75rem;
+  color: #4f46e5;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: var(--radius-sm);
-  background: rgba(99, 102, 241, 0.1);
+  background: #eef2ff;
   transition: all var(--transition-fast);
 }
 
 .editButton:hover {
-  background: rgba(99, 102, 241, 0.2);
-  color: #ffffff;
+  background: #e0e7ff;
 }
 
 .detailsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 12px;
 }
 
 .detailItem {
@@ -61,17 +61,17 @@
 }
 
 .detailLabel {
-  font-size: 0.72rem;
-  color: var(--text-muted);
+  font-size: 0.7rem;
+  color: #64748b;
   text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 .detailValue {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #0f172a;
 }
 
 .chipsList {
@@ -83,26 +83,27 @@
 
 .chip {
   padding: 3px 8px;
-  background: rgba(255, 255, 255, 0.06);
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  color: var(--text-secondary);
+  font-size: 0.74rem;
+  color: #475569;
 }
 
 .contactSection {
-  background: rgba(18, 25, 42, 0.8);
-  border: 1px solid var(--border-medium);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-lg);
-  padding: 22px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .contactHeading {
-  font-size: 1.1rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #0f172a;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -110,18 +111,18 @@
 
 .urgencyChips {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .urgencyChip {
   flex: 1;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: var(--radius-md);
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
-  font-size: 0.85rem;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #475569;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,41 +131,14 @@
 }
 
 .urgencyChip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-primary);
+  background: #f1f5f9;
+  color: #0f172a;
 }
 
 .urgencyChip.active {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: rgba(239, 68, 68, 0.5);
-  color: #f87171;
-}
-
-.submitBanner {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  border-radius: var(--radius-md);
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.submitBannerText {
-  display: flex;
-  flex-direction: column;
-}
-
-.submitBannerTitle {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.submitBannerSub {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
+  background: #fef2f2;
+  border-color: #f87171;
+  color: #b91c1c;
 }
 
 @media (max-width: 768px) {
@@ -173,9 +147,5 @@
   }
   .urgencyChips {
     flex-direction: column;
-  }
-  .submitBanner {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }

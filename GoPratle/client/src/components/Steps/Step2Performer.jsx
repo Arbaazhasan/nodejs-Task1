@@ -60,7 +60,7 @@ export default function Step2Performer({ formData, onChange, errors = {} }) {
           Performer • Step 02
         </div>
         <h2 className={styles.sectionTitle}>
-          <Mic size={22} color="#f472b6" />
+          <Mic size={22} color="#db2777" />
           Performer Role, Genres & Stage Vibe
         </h2>
         <p className={styles.sectionSubtitle}>

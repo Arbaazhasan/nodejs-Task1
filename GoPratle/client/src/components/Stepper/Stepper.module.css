@@ -3,24 +3,24 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  margin: 32px 0 40px 0;
+  margin: 24px 0 32px 0;
   padding: 0 10px;
 }
 
 .trackLine {
   position: absolute;
-  top: 22px;
-  left: 30px;
-  right: 30px;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.08);
+  top: 20px;
+  left: 36px;
+  right: 36px;
+  height: 2px;
+  background: #e2e8f0;
   z-index: 1;
 }
 
 .trackProgress {
   height: 100%;
-  background: var(--accent-gradient);
-  transition: width var(--transition-smooth);
+  background: var(--accent-primary);
+  transition: width var(--transition-normal);
 }
 
 .stepItem {
@@ -36,36 +36,35 @@
 }
 
 .stepBubble {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: var(--bg-surface-elevated);
-  border: 2px solid var(--border-medium);
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--text-muted);
+  font-size: 0.9rem;
+  color: #64748b;
   transition: all var(--transition-normal);
 }
 
 .stepItem.active .stepBubble {
-  background: var(--bg-surface-elevated);
+  background: var(--accent-primary);
   border-color: var(--accent-primary);
   color: #ffffff;
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
-  transform: scale(1.08);
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
 }
 
 .stepItem.completed .stepBubble {
-  background: var(--accent-gradient);
-  border-color: transparent;
+  background: #10b981;
+  border-color: #10b981;
   color: #ffffff;
 }
 
 .stepLabelGroup {
-  margin-top: 10px;
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,33 +72,34 @@
 }
 
 .stepNumber {
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.68rem;
+  font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
+  color: #94a3b8;
+  letter-spacing: 0.04em;
 }
 
 .stepTitle {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #475569;
   transition: color var(--transition-fast);
   white-space: nowrap;
 }
 
 .stepSubtitle {
   font-size: 0.7rem;
-  color: var(--text-muted);
+  color: #94a3b8;
   white-space: nowrap;
 }
 
 .stepItem.active .stepTitle {
-  color: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
 }
 
 .stepItem.completed .stepTitle {
-  color: var(--text-primary);
+  color: #334155;
 }
 
 @media (max-width: 680px) {
@@ -107,14 +107,14 @@
     display: none;
   }
   .stepTitle {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
   .stepBubble {
-    width: 36px;
-    height: 36px;
-    font-size: 0.85rem;
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
   }
   .trackLine {
-    top: 18px;
+    top: 16px;
   }
 }

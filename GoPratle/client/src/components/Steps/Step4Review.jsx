@@ -111,7 +111,7 @@ export default function Step4Review({ formData, onChange, onJumpToStep, errors =
           <div className={styles.summaryCard}>
             <div className={styles.cardHeader}>
               <div className={styles.cardTitle}>
-                <Sparkles size={18} color="#c084fc" />
+                <Sparkles size={18} color="#7c3aed" />
                 <span>Planner Specifications</span>
               </div>
               <button
@@ -172,7 +172,7 @@ export default function Step4Review({ formData, onChange, onJumpToStep, errors =
           <div className={styles.summaryCard}>
             <div className={styles.cardHeader}>
               <div className={styles.cardTitle}>
-                <Sparkles size={18} color="#f472b6" />
+                <Sparkles size={18} color="#db2777" />
                 <span>Performer Specifications</span>
               </div>
               <button
@@ -235,7 +235,7 @@ export default function Step4Review({ formData, onChange, onJumpToStep, errors =
           <div className={styles.summaryCard}>
             <div className={styles.cardHeader}>
               <div className={styles.cardTitle}>
-                <Sparkles size={18} color="#22d3ee" />
+                <Sparkles size={18} color="#0284c7" />
                 <span>Crew Specifications</span>
               </div>
               <button
@@ -283,7 +283,7 @@ export default function Step4Review({ formData, onChange, onJumpToStep, errors =
       {/* Poster / Contact Information */}
       <div className={styles.contactSection}>
         <div className={styles.contactHeading}>
-          <User size={20} color="#6366f1" />
+          <User size={20} color="#4f46e5" />
           <span>Poster Contact Details</span>
         </div>
 

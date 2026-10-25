@@ -1,7 +1,7 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 /**
- * Standard fetch helper with error handling
+ * Standard fetch helper with user-friendly error messages
  */
 async function request(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
@@ -24,7 +24,18 @@ async function request(endpoint, options = {}) {
 
     return json;
   } catch (error) {
-    console.error(`[API Error] ${endpoint}:`, error);
+    // If backend server is down or unreachable
+    if (
+      error.name === 'TypeError' &&
+      (error.message.includes('fetch') || error.message.includes('network') || error.message.includes('Failed'))
+    ) {
+      const helpfulError = new Error(
+        'Backend server is not running on port 5000. Please open a terminal and run "npm run dev:backend" to start the Express backend.'
+      );
+      helpfulError.isConnectionError = true;
+      throw helpfulError;
+    }
+
     throw error;
   }
 }

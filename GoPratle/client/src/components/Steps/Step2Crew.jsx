@@ -39,7 +39,7 @@ export default function Step2Crew({ formData, onChange, errors = {} }) {
           Crew • Step 02
         </div>
         <h2 className={styles.sectionTitle}>
-          <Sliders size={22} color="#22d3ee" />
+          <Sliders size={22} color="#0284c7" />
           Crew Discipline, Headcount & Call Time
         </h2>
         <p className={styles.sectionSubtitle}>

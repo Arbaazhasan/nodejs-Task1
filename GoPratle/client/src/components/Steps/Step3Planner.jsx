@@ -36,7 +36,7 @@ export default function Step3Planner({ formData, onChange }) {
           Event Planner • Step 03
         </div>
         <h2 className={styles.sectionTitle}>
-          <Award size={22} color="#c084fc" />
+          <Award size={22} color="#7c3aed" />
           Execution Milestones & Planner Tier
         </h2>
         <p className={styles.sectionSubtitle}>

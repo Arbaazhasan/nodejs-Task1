@@ -67,7 +67,7 @@ export default function Step2Planner({ formData, onChange, errors = {} }) {
           Event Planner • Step 02
         </div>
         <h2 className={styles.sectionTitle}>
-          <CalendarRange size={22} color="#c084fc" />
+          <CalendarRange size={22} color="#7c3aed" />
           Planning Scope, Scale & Aesthetics
         </h2>
         <p className={styles.sectionSubtitle}>

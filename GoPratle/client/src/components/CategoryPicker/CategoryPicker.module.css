@@ -1,133 +1,103 @@
 .pickerGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 12px;
+  gap: 14px;
+  margin-top: 8px;
 }
 
 .categoryCard {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 2px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
   transition: all var(--transition-normal);
-}
-
-.categoryCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: transparent;
-  transition: background var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .categoryCard:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-medium);
-  background: rgba(25, 35, 58, 0.7);
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-md);
 }
 
 .iconWrapper {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
-  transition: transform var(--transition-normal);
-}
-
-.categoryCard:hover .iconWrapper {
-  transform: scale(1.08);
+  margin-bottom: 12px;
+  background: #f1f5f9;
+  color: #475569;
 }
 
 /* Category Specific Active States */
 .categoryCard.planner.selected {
-  border-color: rgba(139, 92, 246, 0.7);
-  background: rgba(139, 92, 246, 0.1);
-  box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+  border-color: var(--planner-accent);
+  background: var(--planner-bg-subtle);
 }
-.categoryCard.planner.selected::before {
-  background: var(--planner-gradient);
-}
-.planner .iconWrapper {
-  background: rgba(139, 92, 246, 0.2);
-  color: #c084fc;
+.planner.selected .iconWrapper {
+  background: #ede9fe;
+  color: var(--planner-accent);
 }
 
 .categoryCard.performer.selected {
-  border-color: rgba(236, 72, 153, 0.7);
-  background: rgba(236, 72, 153, 0.1);
-  box-shadow: 0 0 25px rgba(236, 72, 153, 0.25);
+  border-color: var(--performer-accent);
+  background: var(--performer-bg-subtle);
 }
-.categoryCard.performer.selected::before {
-  background: var(--performer-gradient);
-}
-.performer .iconWrapper {
-  background: rgba(236, 72, 153, 0.2);
-  color: #f472b6;
+.performer.selected .iconWrapper {
+  background: #fce7f3;
+  color: var(--performer-accent);
 }
 
 .categoryCard.crew.selected {
-  border-color: rgba(6, 182, 212, 0.7);
-  background: rgba(6, 182, 212, 0.1);
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+  border-color: var(--crew-accent);
+  background: var(--crew-bg-subtle);
 }
-.categoryCard.crew.selected::before {
-  background: var(--crew-gradient);
-}
-.crew .iconWrapper {
-  background: rgba(6, 182, 212, 0.2);
-  color: #22d3ee;
+.crew.selected .iconWrapper {
+  background: #e0f2fe;
+  color: var(--crew-accent);
 }
 
 .cardTitle {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: #0f172a;
+  margin-bottom: 4px;
 }
 
 .cardDescription {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+  font-size: 0.78rem;
+  color: #64748b;
   line-height: 1.4;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .selectedIndicator {
   margin-top: auto;
   font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   display: flex;
   align-items: center;
   gap: 4px;
+  color: #94a3b8;
 }
 
-.planner .selectedIndicator {
-  color: #c084fc;
+.planner.selected .selectedIndicator {
+  color: var(--planner-accent);
 }
-.performer .selectedIndicator {
-  color: #f472b6;
+.performer.selected .selectedIndicator {
+  color: var(--performer-accent);
 }
-.crew .selectedIndicator {
-  color: #22d3ee;
+.crew.selected .selectedIndicator {
+  color: var(--crew-accent);
 }
 
 @media (max-width: 768px) {

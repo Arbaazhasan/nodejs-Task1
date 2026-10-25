@@ -4,6 +4,7 @@
   "description": "Full-stack requirement posting flow built for GoPratle Technical Assessment (Next.js + Node.js/Express + MongoDB)",
   "private": true,
   "scripts": {
+    "dev": "npx -y concurrently -n \"backend,frontend\" -c \"blue,green\" \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd server && npm run dev",
     "dev:frontend": "cd client && npm run dev",
     "start:backend": "cd server && npm start",

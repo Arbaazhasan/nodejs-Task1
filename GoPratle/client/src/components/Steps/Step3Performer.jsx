@@ -65,7 +65,7 @@ export default function Step3Performer({ formData, onChange }) {
           Performer • Step 03
         </div>
         <h2 className={styles.sectionTitle}>
-          <Volume2 size={22} color="#f472b6" />
+          <Volume2 size={22} color="#db2777" />
           Stage Sound, Backline & Rider Logistics
         </h2>
         <p className={styles.sectionSubtitle}>

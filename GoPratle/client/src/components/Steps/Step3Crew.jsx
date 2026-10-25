@@ -49,7 +49,7 @@ export default function Step3Crew({ formData, onChange }) {
           Crew • Step 03
         </div>
         <h2 className={styles.sectionTitle}>
-          <ShieldCheck size={22} color="#22d3ee" />
+          <ShieldCheck size={22} color="#0284c7" />
           Crew Skill Level, Rates & Safety Provisions
         </h2>
         <p className={styles.sectionSubtitle}>
