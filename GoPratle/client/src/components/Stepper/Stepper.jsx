@@ -1,77 +1,37 @@
 'use client';
 
 import styles from './Stepper.module.css';
-import { Check } from 'lucide-react';
 
-export default function Stepper({ currentStep, onStepClick, category = 'planner' }) {
-  const getCategoryStep2Title = () => {
-    switch (category) {
-      case 'performer':
-        return { title: 'Role & Genres', sub: 'Performer specs' };
-      case 'crew':
-        return { title: 'Discipline & Shift', sub: 'Crew headcount' };
-      default:
-        return { title: 'Scope & Guests', sub: 'Planning services' };
-    }
-  };
+const steps = [
+  { id: 1, title: 'Event Basics' },
+  { id: 2, title: 'Category Details' },
+  { id: 3, title: 'Requirements' },
+  { id: 4, title: 'Review & Submit' },
+];
 
-  const getCategoryStep3Title = () => {
-    switch (category) {
-      case 'performer':
-        return { title: 'Sound & Logistics', sub: 'Hospitality & gear' };
-      case 'crew':
-        return { title: 'Skills & Gear', sub: 'Rates & safety' };
-      default:
-        return { title: 'Execution & Tier', sub: 'Milestones & style' };
-    }
-  };
-
-  const step2Info = getCategoryStep2Title();
-  const step3Info = getCategoryStep3Title();
-
-  const steps = [
-    { number: 1, title: 'Event Basics', sub: 'Category & details' },
-    { number: 2, title: step2Info.title, sub: step2Info.sub },
-    { number: 3, title: step3Info.title, sub: step3Info.sub },
-    { number: 4, title: 'Review & Post', sub: 'Contact & publish' },
-  ];
-
-  const progressPercent = ((currentStep - 1) / (steps.length - 1)) * 100;
-
+export default function Stepper({ currentStep, onStepClick }) {
   return (
-    <div className={styles.stepperContainer}>
-      <div className={styles.trackLine}>
-        <div className={styles.trackProgress} style={{ width: `${progressPercent}%` }} />
-      </div>
-
-      {steps.map((step) => {
-        const isCompleted = currentStep > step.number;
-        const isActive = currentStep === step.number;
+    <div className={styles.stepper}>
+      {steps.map((step, idx) => {
+        const isCompleted = currentStep > step.id;
+        const isActive = currentStep === step.id;
 
         return (
-          <button
-            key={step.number}
-            type="button"
-            className={`${styles.stepItem} ${isActive ? styles.active : ''} ${
-              isCompleted ? styles.completed : ''
-            }`}
-            onClick={() => {
-              // Allow jumping to already completed steps or current step
-              if (step.number <= currentStep) {
-                onStepClick(step.number);
-              }
-            }}
-          >
-            <div className={styles.stepBubble}>
-              {isCompleted ? <Check size={20} strokeWidth={3} /> : step.number}
-            </div>
-
-            <div className={styles.stepLabelGroup}>
-              <span className={styles.stepNumber}>Step 0{step.number}</span>
+          <div key={step.id} style={{ display: 'flex', alignItems: 'center', flex: idx < steps.length - 1 ? 1 : 'none' }}>
+            <button
+              type="button"
+              className={`${styles.step} ${isActive ? styles.active : ''} ${isCompleted ? styles.completed : ''}`}
+              onClick={() => {
+                if (step.id <= currentStep) onStepClick(step.id);
+              }}
+            >
+              <div className={styles.stepNumber}>
+                {isCompleted ? '✓' : step.id}
+              </div>
               <span className={styles.stepTitle}>{step.title}</span>
-              <span className={styles.stepSubtitle}>{step.sub}</span>
-            </div>
-          </button>
+            </button>
+            {idx < steps.length - 1 && <div className={styles.divider} />}
+          </div>
         );
       })}
     </div>

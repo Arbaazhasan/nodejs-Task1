@@ -2,15 +2,14 @@
 
 import styles from '../FormStyles.module.css';
 import CategoryPicker from '../CategoryPicker/CategoryPicker';
-import { Calendar, MapPin, Building, Sparkles, AlertCircle } from 'lucide-react';
 
-const eventTypePresets = [
+const eventTypes = [
   'Wedding',
-  'Corporate',
+  'Corporate Event',
   'Concert / Music Festival',
   'Birthday Party',
   'College Fest',
-  'Exhibition / Trade Show',
+  'Exhibition',
   'Private Celebration',
   'Other',
 ];
@@ -37,48 +36,29 @@ export default function Step1Basics({ formData, onChange, errors = {} }) {
     });
   };
 
-  const handleVenueChange = (field, value) => {
-    onChange('eventBasics', {
-      ...basics,
-      venue: {
-        ...venue,
-        [field]: value,
-      },
-    });
-  };
-
   return (
-    <div className={`${styles.formSection} animate-fade-in`}>
-      <div className={styles.sectionHeader}>
-        <h2 className={styles.sectionTitle}>
-          <Sparkles size={22} className="brand-gradient-text" />
-          Step 1: Event Basics & Category
-        </h2>
+    <div className={styles.formSection}>
+      <div>
+        <h2 className={styles.sectionTitle}>Step 1: Event Basics</h2>
         <p className={styles.sectionSubtitle}>
-          Provide core event details and choose whether you are hiring an Event Planner, Performer, or Production Crew.
+          Enter core event information and choose the required category.
         </p>
       </div>
 
       {/* Category Selector */}
       <div className={styles.formGroup}>
         <label className={styles.label}>
-          Target Requirement Category <span className={styles.requiredStar}>*</span>
-          <span className={styles.labelHint}>(Steps 2 & 3 dynamically adapt to this choice)</span>
+          Select Category <span className={styles.requiredStar}>*</span>
         </label>
         <CategoryPicker
           selectedCategory={formData.category}
           onSelectCategory={(cat) => onChange('category', cat)}
         />
-        {errors.category && (
-          <div className={styles.errorMessage}>
-            <AlertCircle size={14} />
-            <span>{errors.category}</span>
-          </div>
-        )}
+        {errors.category && <span className={styles.errorMessage}>{errors.category}</span>}
       </div>
 
-      {/* Event Details Grid */}
       <div className={styles.formGrid}>
+        {/* Event Name */}
         <div className={`${styles.formGroup} ${styles.fullWidth}`}>
           <label className={styles.label} htmlFor="eventName">
             Event Name <span className={styles.requiredStar}>*</span>
@@ -87,186 +67,112 @@ export default function Step1Basics({ formData, onChange, errors = {} }) {
             id="eventName"
             type="text"
             className={`${styles.input} ${errors.eventName ? styles.inputError : ''}`}
-            placeholder="e.g. Lumina Tech Summit 2026, Grand Royal Reception"
+            placeholder="e.g. Annual Tech Fest 2026, Wedding Reception"
             value={basics.eventName || ''}
             onChange={(e) => handleBasicsChange('eventName', e.target.value)}
           />
-          {errors.eventName && (
-            <div className={styles.errorMessage}>
-              <AlertCircle size={14} />
-              <span>{errors.eventName}</span>
-            </div>
-          )}
+          {errors.eventName && <span className={styles.errorMessage}>{errors.eventName}</span>}
         </div>
 
         {/* Event Type */}
-        <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-          <label className={styles.label}>
+        <div className={styles.formGroup}>
+          <label className={styles.label} htmlFor="eventType">
             Event Type <span className={styles.requiredStar}>*</span>
           </label>
-          <div className={styles.chipsContainer}>
-            {eventTypePresets.map((type) => (
-              <button
-                key={type}
-                type="button"
-                className={`${styles.chipButton} ${basics.eventType === type ? styles.active : ''}`}
-                onClick={() => handleBasicsChange('eventType', type)}
-              >
-                {type}
-              </button>
+          <select
+            id="eventType"
+            className={`${styles.select} ${errors.eventType ? styles.inputError : ''}`}
+            value={basics.eventType || 'Wedding'}
+            onChange={(e) => handleBasicsChange('eventType', e.target.value)}
+          >
+            {eventTypes.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
             ))}
-          </div>
-          {errors.eventType && (
-            <div className={styles.errorMessage}>
-              <AlertCircle size={14} />
-              <span>{errors.eventType}</span>
-            </div>
-          )}
+          </select>
+          {errors.eventType && <span className={styles.errorMessage}>{errors.eventType}</span>}
         </div>
 
-        {/* Date Range Toggle */}
+        {/* Location City */}
+        <div className={styles.formGroup}>
+          <label className={styles.label} htmlFor="city">
+            Location / City <span className={styles.requiredStar}>*</span>
+          </label>
+          <input
+            id="city"
+            type="text"
+            className={`${styles.input} ${errors.city ? styles.inputError : ''}`}
+            placeholder="e.g. Mumbai, Bengaluru, Delhi"
+            value={location.city || ''}
+            onChange={(e) => handleLocationChange('city', e.target.value)}
+          />
+          {errors.city && <span className={styles.errorMessage}>{errors.city}</span>}
+        </div>
+
+        {/* Date Range Checkbox */}
         <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-          <div className={styles.toggleRow}>
-            <div className={styles.toggleLabelGroup}>
-              <span className={styles.toggleLabel}>Multi-Day Event / Date Range?</span>
-              <span className={styles.toggleDescription}>
-                Toggle on if your event spans across multiple dates
-              </span>
-            </div>
-            <label className={styles.switch}>
-              <input
-                type="checkbox"
-                checked={Boolean(basics.isDateRange)}
-                onChange={(e) => handleBasicsChange('isDateRange', e.target.checked)}
-              />
-              <span className={styles.slider} />
-            </label>
-          </div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              checked={Boolean(basics.isDateRange)}
+              onChange={(e) => handleBasicsChange('isDateRange', e.target.checked)}
+            />
+            <span>This is a multi-day event (Date Range)</span>
+          </label>
         </div>
 
         {/* Start Date */}
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="startDate">
-            {basics.isDateRange ? 'Event Start Date' : 'Event Date'}{' '}
-            <span className={styles.requiredStar}>*</span>
+            {basics.isDateRange ? 'Start Date' : 'Event Date'} <span className={styles.requiredStar}>*</span>
           </label>
-          <div className={styles.inputWrapper}>
-            <Calendar size={18} className={styles.inputIcon} />
-            <input
-              id="startDate"
-              type="date"
-              className={`${styles.input} ${styles.hasIcon} ${errors.startDate ? styles.inputError : ''}`}
-              value={basics.startDate || ''}
-              onChange={(e) => handleBasicsChange('startDate', e.target.value)}
-            />
-          </div>
-          {errors.startDate && (
-            <div className={styles.errorMessage}>
-              <AlertCircle size={14} />
-              <span>{errors.startDate}</span>
-            </div>
-          )}
+          <input
+            id="startDate"
+            type="date"
+            className={`${styles.input} ${errors.startDate ? styles.inputError : ''}`}
+            value={basics.startDate || ''}
+            onChange={(e) => handleBasicsChange('startDate', e.target.value)}
+          />
+          {errors.startDate && <span className={styles.errorMessage}>{errors.startDate}</span>}
         </div>
 
         {/* End Date (if isDateRange) */}
         {basics.isDateRange && (
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="endDate">
-              Event End Date <span className={styles.requiredStar}>*</span>
+              End Date <span className={styles.requiredStar}>*</span>
             </label>
-            <div className={styles.inputWrapper}>
-              <Calendar size={18} className={styles.inputIcon} />
-              <input
-                id="endDate"
-                type="date"
-                className={`${styles.input} ${styles.hasIcon} ${errors.endDate ? styles.inputError : ''}`}
-                value={basics.endDate || ''}
-                min={basics.startDate || ''}
-                onChange={(e) => handleBasicsChange('endDate', e.target.value)}
-              />
-            </div>
-            {errors.endDate && (
-              <div className={styles.errorMessage}>
-                <AlertCircle size={14} />
-                <span>{errors.endDate}</span>
-              </div>
-            )}
+            <input
+              id="endDate"
+              type="date"
+              className={`${styles.input} ${errors.endDate ? styles.inputError : ''}`}
+              value={basics.endDate || ''}
+              min={basics.startDate || ''}
+              onChange={(e) => handleBasicsChange('endDate', e.target.value)}
+            />
+            {errors.endDate && <span className={styles.errorMessage}>{errors.endDate}</span>}
           </div>
         )}
 
-        {/* Location City */}
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="city">
-            City <span className={styles.requiredStar}>*</span>
-          </label>
-          <div className={styles.inputWrapper}>
-            <MapPin size={18} className={styles.inputIcon} />
-            <input
-              id="city"
-              type="text"
-              className={`${styles.input} ${styles.hasIcon} ${errors.city ? styles.inputError : ''}`}
-              placeholder="e.g. Mumbai, Bengaluru, Delhi, Goa"
-              value={location.city || ''}
-              onChange={(e) => handleLocationChange('city', e.target.value)}
-            />
-          </div>
-          {errors.city && (
-            <div className={styles.errorMessage}>
-              <AlertCircle size={14} />
-              <span>{errors.city}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Location State */}
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="state">
-            State / Region <span className={styles.labelHint}>(Optional)</span>
+        {/* Venue Name (Optional) */}
+        <div className={`${styles.formGroup} ${styles.fullWidth}`}>
+          <label className={styles.label} htmlFor="venueName">
+            Venue Name <span style={{ color: '#94a3b8', fontWeight: 400 }}>(Optional)</span>
           </label>
           <input
-            id="state"
+            id="venueName"
             type="text"
             className={styles.input}
-            placeholder="e.g. Maharashtra, Karnataka"
-            value={location.state || ''}
-            onChange={(e) => handleLocationChange('state', e.target.value)}
+            placeholder="e.g. Grand Banquet Hall, Community Centre"
+            value={venue.name || ''}
+            onChange={(e) =>
+              onChange('eventBasics', {
+                ...basics,
+                venue: { ...(basics.venue || {}), name: e.target.value },
+              })
+            }
           />
-        </div>
-
-        {/* Venue Name */}
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="venueName">
-            Venue Name <span className={styles.labelHint}>(Optional)</span>
-          </label>
-          <div className={styles.inputWrapper}>
-            <Building size={18} className={styles.inputIcon} />
-            <input
-              id="venueName"
-              type="text"
-              className={`${styles.input} ${styles.hasIcon}`}
-              placeholder="e.g. Grand Hyatt Ballroom, Palace Grounds"
-              value={venue.name || ''}
-              onChange={(e) => handleVenueChange('name', e.target.value)}
-            />
-          </div>
-        </div>
-
-        {/* Venue Type */}
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="venueType">
-            Venue Environment
-          </label>
-          <select
-            id="venueType"
-            className={styles.select}
-            value={venue.venueType || 'Not Decided Yet'}
-            onChange={(e) => handleVenueChange('venueType', e.target.value)}
-          >
-            <option value="Not Decided Yet">Not Decided Yet</option>
-            <option value="Indoor">Indoor (AC Hall / Banquet)</option>
-            <option value="Outdoor">Outdoor (Lawn / Amphitheater)</option>
-            <option value="Hybrid">Hybrid (Indoor + Outdoor Courtyard)</option>
-          </select>
         </div>
       </div>
     </div>

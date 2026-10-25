@@ -1,151 +1,32 @@
-.reviewSummary {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
 .summaryCard {
-  background: #ffffff;
+  background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: var(--radius-lg);
-  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-.cardHeader {
+.summaryRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 6px;
 }
 
-.cardTitle {
-  font-size: 0.95rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #0f172a;
-}
-
-.editButton {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.75rem;
-  color: #4f46e5;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  background: #eef2ff;
-  transition: all var(--transition-fast);
-}
-
-.editButton:hover {
-  background: #e0e7ff;
-}
-
-.detailsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.detailItem {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.detailLabel {
-  font-size: 0.7rem;
+.label {
   color: #64748b;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-weight: 500;
 }
 
-.detailValue {
-  font-size: 0.88rem;
-  font-weight: 600;
+.value {
   color: #0f172a;
-}
-
-.chipsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.chip {
-  padding: 3px 8px;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-full);
-  font-size: 0.74rem;
-  color: #475569;
-}
-
-.contactSection {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-lg);
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.contactHeading {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #0f172a;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.urgencyChips {
-  display: flex;
-  gap: 8px;
-}
-
-.urgencyChip {
-  flex: 1;
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  font-size: 0.82rem;
   font-weight: 600;
-  color: #475569;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: all var(--transition-fast);
 }
 
-.urgencyChip:hover {
-  background: #f1f5f9;
-  color: #0f172a;
-}
-
-.urgencyChip.active {
-  background: #fef2f2;
-  border-color: #f87171;
-  color: #b91c1c;
-}
-
-@media (max-width: 768px) {
-  .detailsGrid {
-    grid-template-columns: 1fr;
-  }
-  .urgencyChips {
-    flex-direction: column;
-  }
+.contactBox {
+  margin-top: 14px;
 }

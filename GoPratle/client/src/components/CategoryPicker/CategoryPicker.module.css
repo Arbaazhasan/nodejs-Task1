@@ -1,107 +1,47 @@
-.pickerGrid {
+.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 8px;
+  gap: 12px;
+  margin-top: 6px;
 }
 
-.categoryCard {
+.card {
   background: #ffffff;
-  border: 2px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 18px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  cursor: pointer;
-  position: relative;
-  transition: all var(--transition-normal);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.categoryCard:hover {
-  transform: translateY(-2px);
-  border-color: #cbd5e1;
-  box-shadow: var(--shadow-md);
-}
-
-.iconWrapper {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-  background: #f1f5f9;
-  color: #475569;
-}
-
-/* Category Specific Active States */
-.categoryCard.planner.selected {
-  border-color: var(--planner-accent);
-  background: var(--planner-bg-subtle);
-}
-.planner.selected .iconWrapper {
-  background: #ede9fe;
-  color: var(--planner-accent);
-}
-
-.categoryCard.performer.selected {
-  border-color: var(--performer-accent);
-  background: var(--performer-bg-subtle);
-}
-.performer.selected .iconWrapper {
-  background: #fce7f3;
-  color: var(--performer-accent);
-}
-
-.categoryCard.crew.selected {
-  border-color: var(--crew-accent);
-  background: var(--crew-bg-subtle);
-}
-.crew.selected .iconWrapper {
-  background: #e0f2fe;
-  color: var(--crew-accent);
-}
-
-.cardTitle {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 4px;
-}
-
-.cardDescription {
-  font-size: 0.78rem;
-  color: #64748b;
-  line-height: 1.4;
-  margin-bottom: 12px;
-}
-
-.selectedIndicator {
-  margin-top: auto;
-  font-size: 0.72rem;
-  font-weight: 700;
-  display: flex;
   align-items: center;
   gap: 4px;
-  color: #94a3b8;
 }
 
-.planner.selected .selectedIndicator {
-  color: var(--planner-accent);
-}
-.performer.selected .selectedIndicator {
-  color: var(--performer-accent);
-}
-.crew.selected .selectedIndicator {
-  color: var(--crew-accent);
+.card:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
 }
 
-@media (max-width: 768px) {
-  .pickerGrid {
+.card.selected {
+  border-color: var(--accent-primary);
+  background: #eff6ff;
+}
+
+.title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+@media (max-width: 600px) {
+  .grid {
     grid-template-columns: 1fr;
   }
 }

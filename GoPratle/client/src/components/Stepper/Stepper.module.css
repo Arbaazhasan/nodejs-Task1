@@ -1,120 +1,64 @@
-.stepperContainer {
+.stepper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 20px 0 28px 0;
   position: relative;
-  margin: 24px 0 32px 0;
-  padding: 0 10px;
 }
 
-.trackLine {
-  position: absolute;
-  top: 20px;
-  left: 36px;
-  right: 36px;
-  height: 2px;
-  background: #e2e8f0;
-  z-index: 1;
-}
-
-.trackProgress {
-  height: 100%;
-  background: var(--accent-primary);
-  transition: width var(--transition-normal);
-}
-
-.stepItem {
+.step {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
+  gap: 8px;
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
-.stepBubble {
-  width: 40px;
-  height: 40px;
+.stepNumber {
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 2px solid #cbd5e1;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.78rem;
   font-weight: 700;
-  font-size: 0.9rem;
   color: #64748b;
-  transition: all var(--transition-normal);
 }
 
-.stepItem.active .stepBubble {
+.step.active .stepNumber {
   background: var(--accent-primary);
   border-color: var(--accent-primary);
   color: #ffffff;
-  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
 }
 
-.stepItem.completed .stepBubble {
+.step.active .stepTitle {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.step.completed .stepNumber {
   background: #10b981;
   border-color: #10b981;
   color: #ffffff;
 }
 
-.stepLabelGroup {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.divider {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 0 8px;
 }
 
-.stepNumber {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #94a3b8;
-  letter-spacing: 0.04em;
-}
-
-.stepTitle {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #475569;
-  transition: color var(--transition-fast);
-  white-space: nowrap;
-}
-
-.stepSubtitle {
-  font-size: 0.7rem;
-  color: #94a3b8;
-  white-space: nowrap;
-}
-
-.stepItem.active .stepTitle {
-  color: #0f172a;
-  font-weight: 700;
-}
-
-.stepItem.completed .stepTitle {
-  color: #334155;
-}
-
-@media (max-width: 680px) {
-  .stepSubtitle {
-    display: none;
-  }
+@media (max-width: 600px) {
   .stepTitle {
-    font-size: 0.72rem;
-  }
-  .stepBubble {
-    width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
-  }
-  .trackLine {
-    top: 16px;
+    display: none;
   }
 }

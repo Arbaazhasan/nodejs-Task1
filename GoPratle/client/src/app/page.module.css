@@ -1,76 +1,39 @@
-.mainWrapper {
+.main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f8fafc;
+  background-color: var(--bg-primary);
 }
 
-.contentContainer {
+.content {
   flex: 1;
-  padding: 24px 20px 60px 20px;
+  padding: 24px 16px 40px 16px;
 }
 
-.heroHeader {
-  text-align: center;
-  max-width: 650px;
-  margin: 0 auto 8px auto;
-}
-
-.heroBadge {
-  margin-bottom: 8px;
-}
-
-.heroTitle {
-  font-size: 1.85rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #0f172a;
-  margin-bottom: 8px;
-}
-
-.heroSubtitle {
-  font-size: 0.9rem;
-  color: #64748b;
-  line-height: 1.5;
-}
-
-.wizardCard {
-  max-width: 860px;
+.card {
+  max-width: 680px;
   margin: 0 auto;
   background: #ffffff;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  padding: 30px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
-  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-sm);
 }
 
-.alertBanner {
+.alert {
   background: #fef2f2;
   border: 1px solid #fecaca;
   color: #991b1b;
-  border-radius: var(--radius-md);
-  padding: 12px 14px;
-  margin-bottom: 18px;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  font-size: 0.82rem;
   line-height: 1.4;
 }
 
-.footerInfo {
-  margin-top: 36px;
+.footer {
   text-align: center;
-  font-size: 0.78rem;
-  color: #94a3b8;
-}
-
-@media (max-width: 768px) {
-  .heroTitle {
-    font-size: 1.5rem;
-  }
-  .wizardCard {
-    padding: 20px 16px;
-  }
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 24px;
 }

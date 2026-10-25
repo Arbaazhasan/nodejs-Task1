@@ -4,192 +4,82 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(15, 23, 42, 0.4);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.2s ease;
+  padding: 16px;
 }
 
-.modalContent {
+.modal {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: var(--radius-xl);
-  padding: 32px 28px;
-  max-width: 500px;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 440px;
   width: 100%;
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
-  position: relative;
-}
-
-.celebrationIcon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #ecfdf5;
-  border: 2px solid #a7f3d0;
-  color: #059669;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
 }
 
 .title {
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: #0f172a;
   margin-bottom: 6px;
 }
 
 .subtitle {
-  font-size: 0.86rem;
-  color: #475569;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  font-size: 0.84rem;
+  color: #64748b;
+  margin-bottom: 16px;
 }
 
-.referenceBox {
-  width: 100%;
+.refBox {
   background: #f8fafc;
   border: 1px dashed #cbd5e1;
-  border-radius: var(--radius-md);
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.referenceLabelGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-}
-
-.referenceLabel {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #64748b;
-  letter-spacing: 0.04em;
-}
-
-.referenceId {
-  font-family: var(--font-mono);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.copyButton {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 12px;
   border-radius: var(--radius-sm);
-  background: #eef2ff;
-  color: #4f46e5;
-  font-size: 0.78rem;
-  font-weight: 600;
-  transition: all var(--transition-fast);
-}
-
-.copyButton:hover {
-  background: #e0e7ff;
-}
-
-.infoCards {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 24px;
-  text-align: left;
-}
-
-.infoItem {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius-md);
-  padding: 8px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.infoLabel {
-  font-size: 0.68rem;
-  color: #64748b;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.infoValue {
-  font-size: 0.84rem;
-  font-weight: 600;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 700;
   color: #0f172a;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-bottom: 18px;
 }
 
-.actionsGroup {
-  width: 100%;
+.actions {
   display: flex;
   gap: 10px;
 }
 
-.primaryAction {
+.btnPrimary {
   flex: 1;
-  padding: 10px 18px;
-  border-radius: var(--radius-md);
   background: var(--accent-primary);
   color: #ffffff;
+  border: none;
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 0.88rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
-  transition: all var(--transition-fast);
+  cursor: pointer;
 }
 
-.primaryAction:hover {
-  background: var(--accent-primary-hover);
+.btnPrimary:hover {
+  background: var(--accent-hover);
 }
 
-.secondaryAction {
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
+.btnSecondary {
   background: #ffffff;
   border: 1px solid #cbd5e1;
   color: #475569;
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 0.84rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all var(--transition-fast);
+  cursor: pointer;
 }
 
-.secondaryAction:hover {
+.btnSecondary:hover {
   background: #f1f5f9;
-  color: #0f172a;
-}
-
-@media (max-width: 600px) {
-  .actionsGroup {
-    flex-direction: column;
-  }
 }
