@@ -1,0 +1,137 @@
+.pickerGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.categoryCard {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.categoryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background var(--transition-fast);
+}
+
+.categoryCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-medium);
+  background: rgba(25, 35, 58, 0.7);
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: transform var(--transition-normal);
+}
+
+.categoryCard:hover .iconWrapper {
+  transform: scale(1.08);
+}
+
+/* Category Specific Active States */
+.categoryCard.planner.selected {
+  border-color: rgba(139, 92, 246, 0.7);
+  background: rgba(139, 92, 246, 0.1);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+}
+.categoryCard.planner.selected::before {
+  background: var(--planner-gradient);
+}
+.planner .iconWrapper {
+  background: rgba(139, 92, 246, 0.2);
+  color: #c084fc;
+}
+
+.categoryCard.performer.selected {
+  border-color: rgba(236, 72, 153, 0.7);
+  background: rgba(236, 72, 153, 0.1);
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.25);
+}
+.categoryCard.performer.selected::before {
+  background: var(--performer-gradient);
+}
+.performer .iconWrapper {
+  background: rgba(236, 72, 153, 0.2);
+  color: #f472b6;
+}
+
+.categoryCard.crew.selected {
+  border-color: rgba(6, 182, 212, 0.7);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+}
+.categoryCard.crew.selected::before {
+  background: var(--crew-gradient);
+}
+.crew .iconWrapper {
+  background: rgba(6, 182, 212, 0.2);
+  color: #22d3ee;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardDescription {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.selectedIndicator {
+  margin-top: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.planner .selectedIndicator {
+  color: #c084fc;
+}
+.performer .selectedIndicator {
+  color: #f472b6;
+}
+.crew .selectedIndicator {
+  color: #22d3ee;
+}
+
+@media (max-width: 768px) {
+  .pickerGrid {
+    grid-template-columns: 1fr;
+  }
+}

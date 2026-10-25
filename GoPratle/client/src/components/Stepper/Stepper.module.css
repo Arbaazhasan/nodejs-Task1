@@ -1,0 +1,120 @@
+.stepperContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin: 32px 0 40px 0;
+  padding: 0 10px;
+}
+
+.trackLine {
+  position: absolute;
+  top: 22px;
+  left: 30px;
+  right: 30px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 1;
+}
+
+.trackProgress {
+  height: 100%;
+  background: var(--accent-gradient);
+  transition: width var(--transition-smooth);
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.stepBubble {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  transition: all var(--transition-normal);
+}
+
+.stepItem.active .stepBubble {
+  background: var(--bg-surface-elevated);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  transform: scale(1.08);
+}
+
+.stepItem.completed .stepBubble {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.stepLabelGroup {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stepNumber {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.stepTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.stepSubtitle {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.stepItem.active .stepTitle {
+  color: #ffffff;
+}
+
+.stepItem.completed .stepTitle {
+  color: var(--text-primary);
+}
+
+@media (max-width: 680px) {
+  .stepSubtitle {
+    display: none;
+  }
+  .stepTitle {
+    font-size: 0.75rem;
+  }
+  .stepBubble {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+  .trackLine {
+    top: 18px;
+  }
+}

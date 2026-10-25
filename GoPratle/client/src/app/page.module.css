@@ -1,0 +1,76 @@
+.mainWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentContainer {
+  flex: 1;
+  padding: 30px 20px 80px 20px;
+}
+
+.heroHeader {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 10px auto;
+}
+
+.heroBadge {
+  margin-bottom: 12px;
+}
+
+.heroTitle {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.heroSubtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.wizardCard {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-surface-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.alertBanner {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footerInfo {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+  .wizardCard {
+    padding: 24px 18px;
+  }
+}

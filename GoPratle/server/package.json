@@ -1,0 +1,34 @@
+{
+  "name": "gopratle-requirement-backend",
+  "version": "1.0.0",
+  "description": "Backend API for GoPratle Requirement Posting Flow (Express + MongoDB)",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --detectOpenHandles"
+  },
+  "keywords": [
+    "gopratle",
+    "express",
+    "mongodb",
+    "requirement-posting",
+    "fullstack"
+  ],
+  "author": "Arbaz Hasan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.1.4",
+    "supertest": "^7.0.0"
+  }
+}

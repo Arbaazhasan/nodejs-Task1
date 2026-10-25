@@ -1,0 +1,25 @@
+{
+  "name": "gopratle-requirement-flow",
+  "version": "1.0.0",
+  "description": "Full-stack requirement posting flow built for GoPratle Technical Assessment (Next.js + Node.js/Express + MongoDB)",
+  "private": true,
+  "scripts": {
+    "dev:backend": "cd server && npm run dev",
+    "dev:frontend": "cd client && npm run dev",
+    "start:backend": "cd server && npm start",
+    "start:frontend": "cd client && npm run dev",
+    "build:frontend": "cd client && npm run build",
+    "test:backend": "cd server && npm test",
+    "install:all": "cd server && npm install --no-bin-links && cd ../client && npm install --no-bin-links"
+  },
+  "keywords": [
+    "gopratle",
+    "nextjs",
+    "express",
+    "mongodb",
+    "event-management",
+    "full-stack"
+  ],
+  "author": "Arbaz Hasan",
+  "license": "ISC"
+}
